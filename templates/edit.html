@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block body %}
+    <!--Predetermine value textbox ref:https://www.w3schools.com/tags/att_input_value.asp-->
+    <div class="container space text-center">
+        <form action="/savechange" method="post">
+            <div class=" row mb-3">
+                <div class="col-sm">
+                    <input name="id" type="hidden" value=" {{ editword.id }}">
+                    <label for="new_thai"><b>New Thai</b></label>
+                    <input class="form-control mx-auto" required id="new_thai" name="new_thai" type="text" value="{{ editword['Thai'] }}">
+                </div>
+                <div class="col-sm">
+                    <label for="new_pronunciation"><b>New Pronunciation</b></label>
+                    <input class="form-control mx-auto" required name="new_pronunciation" type="text" value="{{ editword['Pronunciation'] }}">
+                </div>
+                <div class="col-sm">
+                    <label for="new_meaning"><b>New Meaning</b></label>
+                    <input class="form-control mx-auto" required name="new_meaning" type="text" value="{{ editword['Meaning'] }}">
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Save Change</button>
+        </form>
+        <form action="/delete" method="post">
+            <input name="id" type="hidden" value="{{ editword.id }}">
+            <button class="btn btn-danger mt-2" type="submit">Delete</button>
+        </form>
+    </div>
+{% endblock %}

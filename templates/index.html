@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body %}
+    <div class="space text-center">
+        <h1>Personalized TH-Dictionary</h1>
+    </div>
+    <div class="container">
+        <div class="section text-center">
+            <form action="/" method="post">
+                <div class="mb-3">
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" required type="text" id="keyword_box" placeholder="What are you searching?" name="keyword">
+                </div>
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="section">
+            <h2>Results</h2>
+            <!--Responsive table ref:https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables-->
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Thai</th>
+                            <th>Pronunciation</th>
+                            <th>Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in results %}
+                        <tr>
+                            <td>{{ result.Thai }}</td>
+                            <td>{{ result.Pronunciation }}</td>
+                            <td>{{ result.Meaning }}</td>
+                            <td>
+                                <form action="/export" method="post">
+                                    <input name="id" type="hidden" value="{{ result.id }}">
+                                    <button class="btn btn-success" type="submit">Select</button>
+                                </form>
+                                {% if session["user_id"] %}
+                                    <form action="/edit" method="post">
+                                        <input name="id" type="hidden" value="{{ result.id }}">
+                                        <button type="submit" class="btn btn-light me-4 mt-4">Edit</button>
+                                    </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

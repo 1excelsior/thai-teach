@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Export
+{% endblock %}
+
+{% block body %}
+    <div class="container space text-center">
+        <h2>Wishlist</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Thai - Pronunciation - Meaning</th>
+                    <th></th>
+                </tr>
+            </thead>
+            {% for word in words %}
+            <tbody>
+                <tr>
+                    <td class="export_word">
+                        {{ word.Thai }} - {{ word.Pronunciation }} - {{ word.Meaning }}
+                    </td>
+                    <td>
+                        <form action="/popexport" method="post" >
+                            <input name="id" type="hidden" value="{{ word.id }}">
+                            <button class="btn btn-warning" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+
+        {% endfor %}
+        </table>
+         <!--Use button as a link ref:https://getbootstrap.com/docs/5.3/components/buttons/-->
+        <a href="/clear" class="btn btn-danger">Clear</a>
+    </div>
+
+    <script>
+        function copy(i) {
+            document.querySelectorAll(i).select();
+            document.execCommand("copy");
+        }
+    </script>
+{% endblock %}

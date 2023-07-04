@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <!--Making each site responsive for mobile-friendliness-->
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <!--Boostrap 5.3-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Thai Teach:{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
+            <div class ="container-fluid">
+                <a class="navbar-brand" href="/">Thai Teach</a>
+                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav ms-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/export">Export</a></li>
+                        {% if not session["user_id"] %}
+                            <li class="nav-item"><a class="nav-link" href="/login">For Teacher</a></li>
+                        {% endif %}
+                    </ul>
+                    <!--Exclusive features for admin/teacher-->
+                    {% if session["user_id"] %}
+                        <ul class="navbar-nav ms-0 mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/add">Add</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        <main class="container-fluid">
+            {% block body %}{% endblock %}
+        </main>
+    </body>
+</html>
