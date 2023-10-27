@@ -48,18 +48,22 @@ All features of this web application can be categorized into two big groups; gen
 Without logging in, every user will have access to three web pages including the homepage, the export page, and the log-in page named "For Teacher" on the navbar.
 
 1.Word Search: as a general feature, the homepage consists of a search bar that can search corresponding words for a keyword; a keyword can be either Thai or English; to be precise, the Thai input will likely correspond to an existing Thai word in the "Thai" column of the words table while English would likely correspond to a data in whether "Pronunciation" or "Meaning"; leaning on the latter. Any corresponding word will be displayed in a table with 3 columns identical to the words table in thaidict.db
+
 ![for thai-teach-readme](https://github.com/1excelsior/thai-teach/assets/84697438/f1785db1-e02a-460d-b6da-c4a69dfba91a)
 
 2.Exportation: By clicking a select button corresponds with a resulted word and its hidden id value, the word will be routed to the export.html via post method, making it possible for users to copy the words by highlighting and copy-paste them in a designated destination such as in a word doc, excel file, plain text file, chat box, etc. Nevertheless, the page comes with a corresponding delete button for each selected word and a clear-all button for convenient use.
+
 ![for thai-teach-readme2](https://github.com/1excelsior/thai-teach/assets/84697438/96fdcd15-b7a9-4c99-b175-fc4f9ed6faf7)
 
 ##### Exclusive Features
 By logging in through a form of the login page, there are 2 hidden features that will become available.
+
 ![for thai-teach-readme3](https://github.com/1excelsior/thai-teach/assets/84697438/1dd597ad-7f83-494d-8a94-7c807c0ab44c)
 
 1.Word Adding: As the name suggests, you will be able to add new words via add.html's form. By providing 3 text bars with a value and then clicking the Add button, the details will be logged into the words table accordingly.
 
 2.Word Editing/Deletion: A new edit button will appear behind each resulting word. By clicking it, you will be routed to an edit.html, this page allows you to edit any detail regarding the word such as its meaning in English, its pronunciation, and even its Thai spelling with a simple click on the Save Change button. Additionally, if you deem the word unneeded, you may delete it via the Delete button.
+
 ![for thai-teach-readme4](https://github.com/1excelsior/thai-teach/assets/84697438/1333fabf-a44d-44b4-864b-12836d5a9ad8)
 
 # thai-teach
